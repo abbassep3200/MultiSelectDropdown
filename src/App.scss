@@ -1,0 +1,174 @@
+$primary-color: #6a7cc7;
+$accent-color: #8199e7;
+$background-color: #f6f7fc;
+$selected-color: #f2f4ff;
+$border-color: #ddd;
+$input-border-color: #ccc;
+$input-focus-border-color: #8d9ddd;
+$scrollbar-background: #fff;
+$scrollbar-thumb: #c5c6cc;
+$text-color: #888;
+$title-color: #888;
+$badge-color: #eee;
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+  background: $scrollbar-background;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $scrollbar-thumb;
+  border-radius: 1ex;
+  border: none;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  font-family: Arial, Helvetica, sans-serif;
+  color: $text-color;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+h4 {
+  margin-bottom: 3em;
+}
+
+.form-wrapper {
+  position: relative;
+
+  & > svg {
+    position: absolute;
+    right: 1.5em;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    fill: $text-color;
+    width: 15px;
+  }
+}
+
+.selected-list {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+  flex-wrap: wrap;
+ min-height: 40px;
+  & > span {
+    background-color: $badge-color;
+    padding: 0.5em;
+    border-radius: 0.5em;
+  }
+}
+
+
+.title {
+  color: $title-color;
+  font-weight: normal;
+}
+
+.dropdown {
+  display: none;
+  border-radius: 2em;
+  border: 1px solid $border-color;
+  margin-top: 0.5em;
+  position: absolute;
+  width: 500px;
+  max-height: 300px;
+  overflow-y: auto;
+  flex-direction: column;
+
+  &-wrapper {
+    width: 500px;
+  }
+
+  &-show {
+    display: flex;
+  }
+
+  &-input {
+    padding: 1.3em;
+    border: 1px solid $input-border-color;
+    border-radius: 1.5em;
+    width: 100%;
+    display: block;
+
+    &:focus {
+      border-color: $input-focus-border-color;
+      outline: 2px solid $background-color;
+    }
+  }
+
+  & > ul {
+    list-style-type: none;
+    padding: 0 1em;
+    overflow-y: auto;
+
+    & > li {
+      padding: 1em;
+      border-radius: 1em;
+      color: $primary-color;
+      margin-top: 0.2em;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      text-transform: capitalize;
+
+      &:hover {
+        background-color: $background-color;
+      }
+
+      &.selected {
+        background-color: $selected-color;
+        font-weight: bold;
+        color: $accent-color;
+
+        > svg {
+          display: inline-block;
+          fill: $accent-color;
+        }
+      }
+
+      > svg {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 1em;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
+
+  & > .no-options {
+    justify-self: center;
+    color: $text-color;
+    text-align: center;
+    margin: 2em 0;
+    line-height: 1.5em;
+  }
+
+}
